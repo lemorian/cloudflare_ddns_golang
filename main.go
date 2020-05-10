@@ -275,7 +275,7 @@ func main() {
 		}
 	}()
 
-	//Catch Quiz Message
+	//Catch Sigterm Signal
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
 	for sig := range c {
