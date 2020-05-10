@@ -283,7 +283,7 @@ func main() {
 		log.Println(sig.String())
 		ticker.Stop()
 		done <- true
-		fmt.Println("Stopped")
+		log.Println("Stopped")
 		break
 	}
 
