@@ -1,0 +1,25 @@
+[Unit]
+Description=Cloudflare DDNS Service
+ConditionPathExists=PATH_HERE
+After=network.target
+
+[Service]
+Type=simple
+User=USER_NAME
+Group=GROUP_NAME
+LimitNOFILE=1024
+
+Restart=on-failure
+RestartSec=10
+
+WorkingDirectory=PATH_HERE
+ExecStart=PATH_HERE/update_ip_cloudflare
+
+# make sure log directory exists and owned by syslog
+PermissionsStartOnly=true
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=DDNS_SCRIPT
+
+[Install]
+WantedBy=multi-user.target
