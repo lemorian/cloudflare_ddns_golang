@@ -12,6 +12,7 @@ import (
 	"os"
 	"os/signal"
 	"strings"
+	"syscall"
 	"time"
 )
 
@@ -277,7 +278,7 @@ func main() {
 
 	//Catch Sigterm Signal
 	c := make(chan os.Signal, 1)
-	signal.Notify(c, os.Interrupt)
+	signal.Notify(c, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
 	for sig := range c {
 		log.Println(sig.String())
 		ticker.Stop()
